@@ -1,0 +1,149 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Inria Serif aplicada de manera general */
+    font-family: 'Inria Serif', serif;
+}
+
+/* Fondo degradado (#253A49 a #365164) */
+body {
+    background: linear-gradient(135deg, #253A49 0%, #365164 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Barra de Navegación --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: transparent;
+}
+
+/* Alineación del Logo + Texto */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo img {
+    height: 42px;
+    display: block;
+}
+
+.logo-text {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+/* Enlaces del Header */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+}
+
+/* Botones del Header y Estilos Generales de Botones con la fuente 'Inter' */
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    font-family: 'Inter', sans-serif; /* Tipografía Inter para todos los botones */
+    text-decoration: none;
+    padding: 9px 22px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #1a364a;
+}
+
+.btn-primary {
+    background-color: #1b4b73;
+    color: #ffffff;
+}
+
+/* --- Contenido Principal (Hero) --- */
+.hero-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+/* Título con tipografía Anton */
+.hero-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.hero-subtitle {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.hero-description {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 40px;
+}
+
+/* Botón Comenzar con la fuente 'Inter' */
+.btn-start {
+    font-family: 'Inter', sans-serif;
+    background-color: #699cc3;
+    color: #ffffff;
+    padding: 12px 60px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-start:hover {
+    background-color: #588bb2;
+}
