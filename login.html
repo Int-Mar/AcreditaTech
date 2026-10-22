@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcreditaTech - Iniciar Sesión</title>
+    
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inria+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-body">
+
+    <!-- Contenedor de la Tarjeta Centrada de Iniciar Sesión -->
+    <div class="login-card-container">
+        <div class="login-card">
+            <div class="form-header">
+                <div class="form-logo">
+                    <img src="img/LogoAzul.png" alt="AcreditaTech">
+                    <span>AcreditaTech</span>
+                </div>
+                <div class="login-title-text">Iniciar Sesión</div>
+            </div>
+
+            <!-- Alerta de error opcional (si hay datos incorrectos) -->
+            <!-- 
+            <div class="error-alert">
+                Correo electrónico o contraseña incorrectos. Verifica tus datos.
+            </div>
+            -->
+
+            <form class="auth-form" action="#" method="POST">
+                <div class="form-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" placeholder="ejemplo: juanpg@gmail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="ocupa letras, números, caracteres especiales, etc." required>
+                </div>
+
+                <button type="submit" class="btn btn-submit">Iniciar Sesión</button>
+            </form>
+
+            <!-- Enlace Admin en la esquina inferior derecha de la tarjeta -->
+            <div class="login-footer">
+                <a href="#" class="admin-link">Admin</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

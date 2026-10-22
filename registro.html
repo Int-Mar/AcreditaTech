@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcreditaTech - Registro</title>
+    
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inria+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+
+    <!-- Modal de Términos y Condiciones sobrepuesto -->
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-card">
+            <div class="modal-logo">
+                <img src="img/LogoAzul.png" alt="AcreditaTech Logo">
+                <span class="modal-logo-text">AcreditaTech</span>
+            </div>
+            
+            <div class="terms-box">
+                <h3>Términos y Condiciones</h3>
+                <p>
+                    Aquí van todos los términos y condiciones chalalalala... 
+                    Al registrarte en AcreditaTech aceptas la evaluación autónoma 
+                    de tus competencias técnicas y de salud ocupacional.
+                </p>
+            </div>
+
+            <button type="button" class="btn btn-modal" id="acceptTermsBtn">Aceptar y continuar</button>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal de la Vista de Registro (Pantalla Completa) -->
+    <div class="auth-container">
+        <!-- Lado Izquierdo: Imagen duplicada de fondo con overlay transparente -->
+        <div class="auth-left">
+            <div class="auth-overlay"></div>
+            <div class="auth-brand">
+                <img src="img/LogoBlanco.png" alt="AcreditaTech" class="brand-logo">
+                <h1 class="brand-name">AcreditaTech</h1>
+            </div>
+        </div>
+
+        <!-- Lado Derecho: Formulario de Registro -->
+        <div class="auth-right">
+            <div class="form-header">
+                <div class="form-logo">
+                    <img src="img/LogoAzul.png" alt="AcreditaTech">
+                    <span>AcreditaTech</span>
+                </div>
+                <div class="form-title-badge">Registrarse</div>
+            </div>
+
+            <form class="auth-form" action="#" method="POST">
+                <div class="form-group">
+                    <label>Nombre Completo:</label>
+                    <input type="text" placeholder="ejemplo: Juan Pérez González" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono de Contacto</label>
+                    <input type="tel" placeholder="ejemplo: 5548461405" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" placeholder="ejemplo: juanpg@gmail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="ocupa letras, números, caracteres especiales, etc." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Alcaldía de Trabajo</label>
+                    <select required>
+                        <option value="" disabled selected>Selecciona tu alcaldía de trabajo</option>
+                        <option value="Iztapalapa">Iztapalapa</option>
+                        <option value="Gustavo A. Madero">Gustavo A. Madero</option>
+                        <option value="Cuauhtémoc">Cuauhtémoc</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Elige tu Oficio (Solo una opción)</label>
+                    <select required>
+                        <option value="" disabled selected>Selecciona tu Oficio</option>
+                        <option value="Electricista">Electricista</option>
+                        <option value="Plomero">Plomero</option>
+                        <option value="Carpintero">Carpintero</option>
+                    </select>
+                </div>
+
+                <div class="form-group terms-group">
+                    <input type="checkbox" id="acceptTerms" required>
+                    <label for="acceptTerms" class="terms-label">Acepto aviso de Términos y Condiciones</label>
+                </div>
+
+                <button type="submit" class="btn btn-submit">Registrarme</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('acceptTermsBtn').addEventListener('click', function() {
+            document.getElementById('termsModal').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

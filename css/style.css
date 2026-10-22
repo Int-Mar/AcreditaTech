@@ -1,22 +1,23 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Inria Serif aplicada de manera general */
     font-family: 'Inria Serif', serif;
 }
 
-/* Fondo degradado (#253A49 a #365164) */
+/* ===================================================
+   1. ESTILOS PARA LA PÁGINA DE INICIO (INDEX)
+   =================================================== */
 body {
     background: linear-gradient(135deg, #253A49 0%, #365164 100%);
     color: #ffffff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
-/* --- Barra de Navegación --- */
+/* Barra de Navegación */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -25,7 +26,7 @@ body {
     background-color: transparent;
 }
 
-/* Alineación del Logo + Texto */
+/* Alineación del Logo y Texto */
 .logo {
     display: flex;
     align-items: center;
@@ -64,14 +65,13 @@ body {
     opacity: 0.8;
 }
 
-/* Botones del Header y Estilos Generales de Botones con la fuente 'Inter' */
 .auth-buttons {
     display: flex;
     gap: 15px;
 }
 
 .btn {
-    font-family: 'Inter', sans-serif; /* Tipografía Inter para todos los botones */
+    font-family: 'Inter', sans-serif;
     text-decoration: none;
     padding: 9px 22px;
     border-radius: 6px;
@@ -92,7 +92,7 @@ body {
     color: #ffffff;
 }
 
-/* --- Contenido Principal (Hero) --- */
+/* Contenido Principal (Hero Section) */
 .hero-container {
     flex: 1;
     display: flex;
@@ -106,7 +106,6 @@ body {
     max-width: 850px;
 }
 
-/* Título con tipografía Anton */
 .hero-title {
     font-family: 'Anton', sans-serif;
     font-size: 3.2rem;
@@ -132,7 +131,6 @@ body {
     margin-bottom: 40px;
 }
 
-/* Botón Comenzar con la fuente 'Inter' */
 .btn-start {
     font-family: 'Inter', sans-serif;
     background-color: #699cc3;
@@ -146,4 +144,398 @@ body {
 
 .btn-start:hover {
     background-color: #588bb2;
+}
+
+
+/* ===================================================
+   2. VISTAS DE AUTENTICACIÓN / REGISTRO (.auth-body)
+   =================================================== */
+body.auth-body {
+    background-color: #5d6163;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.auth-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Lado Izquierdo: Branding e Imagen de Fondo */
+.auth-left {
+    flex: 1;
+    position: relative;
+    background-image: url('../img/plantillaoficio.jpg'), url('../img/plantillaoficio.jpg');
+    background-position: top center, bottom center;
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.auth-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 58, 73, 0.72);
+    z-index: 1;
+}
+
+.auth-brand {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+}
+
+.brand-logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.brand-name {
+    font-family: 'Inria Serif', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+/* Lado Derecho: Formulario */
+.auth-right {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.form-logo img {
+    height: 40px;
+}
+
+.form-logo span {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a364a;
+}
+
+.form-title-badge {
+    background-color: #f7931e;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Formulario e Inputs */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #222222;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #555555;
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: #aaaaaa;
+}
+
+/* Alineación horizontal del Checkbox y Términos */
+.terms-group {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 8px;
+}
+
+.terms-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+.terms-group .terms-label {
+    text-align: left;
+    margin: 0;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #333333;
+}
+
+/* Botón Registrarme */
+.btn-submit {
+    font-family: 'Inter', sans-serif;
+    background-color: #1b4b73;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 60%;
+    align-self: center;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #153a59;
+}
+
+/* Ventana Modal de Términos y Condiciones */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-card {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 520px;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.modal-logo img {
+    height: 38px;
+}
+
+.modal-logo-text {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a364a;
+}
+
+.terms-box {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.terms-box h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 8px;
+}
+
+.terms-box p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #666666;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.btn-modal {
+    font-family: 'Inter', sans-serif;
+    background-color: #1b4b73;
+    color: #ffffff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-modal:hover {
+    background-color: #153a59;
+}
+
+
+/* ===================================================
+   3. ADAPTABILIDAD RESPONSIVA (MÓVILES Y TABLETS)
+   =================================================== */
+@media (max-width: 850px) {
+    .auth-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .auth-left {
+        flex: none;
+        padding: 30px 20px;
+        background-size: cover;
+    }
+
+    .brand-logo {
+        width: 120px;
+    }
+
+    .brand-name {
+        font-size: 2.2rem;
+    }
+
+    .auth-right {
+        padding: 30px 20px;
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+
+
+
+/* ===================================================
+   VISTA DE LOGIN (Tarjeta Centrada sobre Fondo de Herramientas)
+   =================================================== */
+body.login-body {
+    background-image: url('../img/plantillaoficio.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Capa oscura translúcida sobre el fondo */
+body.login-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 58, 73, 0.72);
+    z-index: 1;
+}
+
+.login-card-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 520px;
+    padding: 35px 40px;
+    border-radius: 16px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.login-title-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333333;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.admin-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #666666;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.admin-link:hover {
+    color: #1b4b73;
+    text-decoration: underline;
 }
