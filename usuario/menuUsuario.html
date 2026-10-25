@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcreditaTech - Menú Principal</title>
+    
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inria+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para los íconos de la barra lateral -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Ruta adaptada al archivo CSS principal -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-container">
+        <!-- Barra Lateral (Sidebar de Navegación del Usuario) -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                
+                <a href="menuUsuario.html" class="nav-item" title="inicio">
+                    <img src="../img/Inicio.png" alt="Inicio" class="nav-icon">
+                </a>
+
+                <a href="progresoUsuario.html" class="nav-item" title="Test">
+                    <img src="../img/Progreso.png" alt="Progreso" class="nav-icon">
+                </a>
+
+                <a href="ConsultarApp.html" class="nav-item" title="Resultados y Guías">
+                    <img src="../img/Guias.png" alt="Consulta App de Guias" class="nav-icon">
+                </a>
+
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="perfilUsuario.html" class="nav-item" title="Resultados y Guías">
+                    <img src="../img/Perfil.png" alt="Consulta Perfil" class="nav-icon">
+                </a>
+                <a href="../login.html" class="nav-item" title="Resultados y Guías">
+                    <img src="../img/Salir.png" alt="Cerrar Sesión" class="nav-icon">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Área Principal -->
+        <div class="main-area">
+            <!-- Barra Superior -->
+            <header class="top-bar">
+                <div class="logo-container">
+                    <img src="../img/LogoBlanco.png" alt="AcreditaTech Logo" class="logo-img">
+                    <span class="logo-text">AcreditaTech</span>
+                </div>
+            </header>
+
+            <!-- Contenedor de las Tarjetas de Test -->
+            <main class="content-grid">
+                <!-- Tarjeta 1: Salud Ocupacional -->
+                <div class="test-card">
+                    <div class="card-info">
+                        <h3>Salud Ocupacional</h3>
+                        <p>Ingresa al test y averigua si eres una persona apta -----</p>
+                    </div>
+                    <a href="ventanasTest.html" class="btn-empezar">Empezar</a>
+                </div>
+
+                <!-- Tarjeta 3: Test Técnico -->
+                <div class="test-card">
+                    <div class="card-info">
+                        <h3>Test Técnico</h3>
+                        <p>Ingresa al test y averigua si eres una persona apta -----</p>
+                    </div>
+                    <a href="ventanasTest.html" class="btn-empezar">Empezar</a>
+                </div>
+
+                <!-- Tarjeta 2: Examen Final -->
+                <div class="test-card">
+                    <div class="card-info">
+                        <h3>Exámen final</h3>
+                        <p>Ingresa al test y averigua si eres una persona apta -----</p>
+                    </div>
+                    <a href="ventanasTest.html" class="btn-empezar">Empezar</a>
+                </div>
+                
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

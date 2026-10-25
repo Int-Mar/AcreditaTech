@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcreditaTech - Modificar Status</title>
+    
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inria+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Ruta al archivo CSS principal -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-container">
+        
+        <!-- Barra Lateral Exclusiva de Administrador -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="menuAdmin.html" class="nav-item" title="Dashboard Admin">
+                    <img src="../img/Inicio.png" alt="Inicio" class="nav-icon">
+                </a>
+                <a href="modificarStatus.html" class="nav-item active" title="Modificar Status">
+                    <img src="../img/Progreso.png" alt="Registros" class="nav-icon">
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="perfilAdmin.html" class="nav-item" title="Perfil Admin">
+                    <img src="../img/Perfil.png" alt="Perfil" class="nav-icon">
+                </a>
+                <a href="../login.html" class="nav-item" title="Cerrar Sesión">
+                    <img src="../img/Salir.png" alt="Cerrar Sesión" class="nav-icon">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Área Principal -->
+        <div class="main-area">
+            <!-- Barra Superior -->
+            <header class="top-bar">
+                <div class="logo-container">
+                    <img src="../img/LogoBlanco.png" alt="AcreditaTech Logo" class="logo-img">
+                    <span class="logo-text">AcreditaTech</span>
+                </div>
+            </header>
+
+            <!-- Contenido de Modificar Status -->
+            <main class="status-content-area">
+                <div class="status-card">
+                    
+                    <!-- Logo y Título dentro de la tarjeta -->
+                    <div class="status-card-header">
+                        <div class="status-card-logo">
+                            <img src="../img/LogoAzul.png" alt="AcreditaTech Logo">
+                            <span>AcreditaTech</span>
+                        </div>
+                        <h2 class="status-card-title">Modificar Status</h2>
+                    </div>
+
+                    <!-- Formulario -->
+                    <form class="status-form">
+                        <div class="status-form-group">
+                            <label>Correo electrónico del trabajador a modificar estatus</label>
+                            <input type="email" placeholder="ejemplo: juanpg@gmail.com" required>
+                        </div>
+
+                        <div class="status-form-group">
+                            <label>Estatus</label>
+                            <select required>
+                                <option value="" disabled selected>Elije el estatus al que deseas cambiar</option>
+                                <option value="proceso">En proceso</option>
+                                <option value="certificado">Certificado</option>
+                            </select>
+                        </div>
+
+                        <!-- Botón de acción -->
+                        <button type="submit" class="btn-status-submit">Actualizar Estatus</button>
+                    </form>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

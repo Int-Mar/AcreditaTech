@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcreditaTech - Resultados del Test</title>
+    
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inria+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Ruta al archivo CSS principal -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-container">
+        
+        <!-- Barra Lateral Exclusiva de Usuario -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="menuUsuario.html" class="nav-item" title="Inicio">
+                    <img src="../img/Inicio.png" alt="Inicio" class="nav-icon">
+                </a>
+
+                <a href="progresoUsuario.html" class="nav-item" title="Progreso / Test">
+                    <img src="../img/Progreso.png" alt="Progreso" class="nav-icon">
+                </a>
+
+                <a href="ConsultarApp.html" class="nav-item" title="Resultados y Guías">
+                    <img src="../img/Guias.png" alt="Consulta App de Guias" class="nav-icon">
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="perfilUsuario.html" class="nav-item" title="Perfil">
+                    <img src="../img/Perfil.png" alt="Consulta Perfil" class="nav-icon">
+                </a>
+                <a href="../login.html" class="nav-item" title="Cerrar Sesión">
+                    <img src="../img/Salir.png" alt="Cerrar Sesión" class="nav-icon">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Área Principal -->
+        <div class="main-area">
+            <!-- Barra Superior -->
+            <header class="top-bar">
+                <div class="logo-container">
+                    <img src="../img/LogoBlanco.png" alt="AcreditaTech Logo" class="logo-img">
+                    <span class="logo-text">AcreditaTech</span>
+                </div>
+            </header>
+
+            <!-- Contenido de la Ventana de Resultados -->
+            <main class="result-content-area">
+                <div class="result-card-container">
+                    
+                    <!-- Título dinámico (Ej. Resultados Técnicos / Resultados Ocupacionales) -->
+                    <h2 class="result-main-title" id="resultTitle">Resultados Técnicos</h2>
+                    <p class="result-subtitle">Resultado obtenido</p>
+
+                    <!-- Caja de Porcentaje (Clase .success para verde o .danger para rojo) -->
+                    <!-- Para cambiar por JavaScript, puedes alternar las clases .success o .danger -->
+                    <div class="result-score-box success" id="resultScoreBox">
+                        <span class="result-percentage" id="resultPercentage">80%</span>
+                        <span class="result-aciertos" id="resultAciertos">Aciertos: 8 de 10 preguntas correctas.</span>
+                    </div>
+
+                    <!-- Mensaje de Estado / Cierre -->
+                    <div class="result-message-block">
+                        <h3 class="result-status-heading" id="resultStatusHeading">¡Has terminado!</h3>
+                        <p class="result-status-text" id="resultStatusText">
+                            ¡Felicidades has conseguido un buen puntaje y eres apto!
+                        </p>
+                    </div>
+
+                    <!-- Botón para volver al panel -->
+                    <div class="result-action-container">
+                        <a href="progresoUsuario.html" class="btn-volver-panel">Volver a mi panel</a>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

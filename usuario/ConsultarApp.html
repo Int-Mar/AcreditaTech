@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcreditaTech - Consulta App</title>
+    
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inria+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para íconos si se requieren -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Ruta al archivo CSS principal -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-container">
+        <!-- Barra Lateral de Navegación del Usuario -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="menuUsuario.html" class="nav-item" title="Inicio">
+                    <img src="../img/Inicio.png" alt="Inicio" class="nav-icon">
+                </a>
+
+                <a href="progresoUsuario.html" class="nav-item" title="Progreso / Test">
+                    <img src="../img/Progreso.png" alt="Progreso" class="nav-icon">
+                </a>
+
+                <a href="ConsultarApp.html" class="nav-item" title="Resultados y Guías">
+                    <img src="../img/Guias.png" alt="Consulta Guias" class="nav-icon">
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="perfilUsuario.html" class="nav-item" title="Perfil">
+                    <img src="../img/Perfil.png" alt="Consulta Perfil" class="nav-icon">
+                </a>
+                <a href="../login.html" class="nav-item" title="Cerrar Sesión">
+                    <img src="../img/Salir.png" alt="Cerrar Sesión" class="nav-icon">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Área Principal -->
+        <div class="main-area">
+            <!-- Barra Superior -->
+            <header class="top-bar">
+                <div class="logo-container">
+                    <img src="../img/LogoBlanco.png" alt="AcreditaTech Logo" class="logo-img">
+                    <span class="logo-text">AcreditaTech</span>
+                </div>
+            </header>
+
+            <!-- Contenido Principal de Consulta App -->
+            <main class="consultar-app-content">
+                <div class="consultar-app-card">
+                    <h1 class="consultar-app-title">Consulta nuestra app Móvil</h1>
+                    <h2 class="consultar-app-subtitle">¿Para que te sirve?</h2>
+                    
+                    <div class="consultar-app-text-block">
+                        <p>Consulta tus guias de apoyo donde quieras.</p>
+                        <p>Completa tu proceso de Pre-constancia.</p>
+                    </div>
+
+                    <div class="consultar-app-action">
+                        <span class="app-name-label">AcreditaTech Móvil</span>
+                        <a href="#" class="btn-descargar">Descargar</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

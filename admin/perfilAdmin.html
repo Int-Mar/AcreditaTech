@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcreditaTech - Perfil Admin</title>
+    
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inria+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para el ícono del ojo y del usuario -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Ruta al archivo CSS principal -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-container">
+        
+        <!-- Barra Lateral Exclusiva de Administrador -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="menuAdmin.html" class="nav-item" title="Dashboard Admin">
+                    <img src="../img/Inicio.png" alt="Inicio" class="nav-icon">
+                </a>
+                <a href="modificarStatus.html" class="nav-item" title="Registros">
+                    <img src="../img/Progreso.png" alt="Registros" class="nav-icon">
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="perfilAdmin.html" class="nav-item active" title="Perfil Admin">
+                    <img src="../img/Perfil.png" alt="Perfil" class="nav-icon">
+                </a>
+                <a href="../login.html" class="nav-item" title="Cerrar Sesión">
+                    <img src="../img/Salir.png" alt="Cerrar Sesión" class="nav-icon">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Área Principal -->
+        <div class="main-area">
+            <!-- Barra Superior -->
+            <header class="top-bar">
+                <div class="logo-container">
+                    <img src="../img/LogoBlanco.png" alt="AcreditaTech Logo" class="logo-img">
+                    <span class="logo-text">AcreditaTech</span>
+                </div>
+            </header>
+
+            <!-- Contenido del Perfil Admin -->
+            <main class="profile-content-area">
+                <div class="profile-card-wrapper">
+                    <!-- Icono / Avatar circular superior -->
+                    <div class="profile-avatar-container">
+                        <div class="profile-avatar-circle">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Azul de Datos del Administrador -->
+                    <div class="profile-card">
+                        <h2 class="profile-user-name">David Marlon Malagon Fuentes</h2>
+                        
+                        <div class="profile-form-box">
+                            <h3 class="profile-section-title">ADMIN</h3>
+
+                            <div class="profile-field">
+                                <label>Correo Electrónico</label>
+                            </div>
+
+                            <div class="profile-field password-field">
+                                <label>Contraseña</label>
+                                <i class="fa-regular fa-eye eye-icon"></i>
+                            </div>
+
+                            <!-- Botón Hacer Cambios -->
+                            <button type="button" class="btn-hacer-cambios">Hacer Cambios</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

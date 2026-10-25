@@ -12,46 +12,70 @@
     
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="login-body">
+<body class="login-body" id="loginBody">
 
     <!-- Contenedor de la Tarjeta Centrada de Iniciar Sesión -->
     <div class="login-card-container">
-        <div class="login-card">
+        <div class="login-card" id="loginCard">
             <div class="form-header">
                 <div class="form-logo">
-                    <img src="img/LogoAzul.png" alt="AcreditaTech">
+                    <img src="img/LogoAzul.png" alt="AcreditaTech" id="loginLogo">
                     <span>AcreditaTech</span>
                 </div>
-                <div class="login-title-text">Iniciar Sesión</div>
+                <!-- Título dinámico -->
+                <div class="login-title-text" id="loginTitle">Iniciar Sesión</div>
             </div>
 
-            <!-- Alerta de error opcional (si hay datos incorrectos) -->
-            <!-- 
-            <div class="error-alert">
-                Correo electrónico o contraseña incorrectos. Verifica tus datos.
-            </div>
-            -->
-
-            <form class="auth-form" action="#" method="POST">
+            <!-- Formulario dinámico: por defecto apunta al menú de usuario -->
+            <form class="auth-form" id="loginForm" action="usuario/menuUsuario.html" method="GET">
                 <div class="form-group">
                     <label>Correo electrónico</label>
-                    <input type="email" placeholder="ejemplo: juanpg@gmail.com" required>
+                    <input type="email" id="inputEmail" placeholder="ejemplo: juanpg@gmail.com" required>
                 </div>
 
                 <div class="form-group">
                     <label>Contraseña</label>
-                    <input type="password" placeholder="ocupa letras, números, caracteres especiales, etc." required>
+                    <input type="password" id="inputPass" placeholder="ocupa letras, números, caracteres especiales, etc." required>
                 </div>
 
-                <button type="submit" class="btn btn-submit">Iniciar Sesión</button>
+                <button type="submit" class="btn btn-submit" id="btnLoginBtn">Iniciar Sesión</button>
             </form>
 
-            <!-- Enlace Admin en la esquina inferior derecha de la tarjeta -->
+            <!-- Enlace Admin / Usuario en la esquina inferior derecha -->
             <div class="login-footer">
-                <a href="#" class="admin-link">Admin</a>
+                <a href="#" class="admin-link" id="toggleRoleLink" onclick="alternarModoAdmin(event)">Admin</a>
             </div>
         </div>
     </div>
+
+    <!-- Script para alternar dinámicamente entre Usuario y Administrador -->
+    <script>
+        let esAdmin = false;
+
+        function alternarModoAdmin(event) {
+            event.preventDefault();
+            esAdmin = !esAdmin;
+
+            const titleText = document.getElementById('loginTitle');
+            const loginForm = document.getElementById('loginForm');
+            const toggleLink = document.getElementById('toggleRoleLink');
+            const loginCard = document.getElementById('loginCard');
+
+            if (esAdmin) {
+                // Cambiar a modo Administrador
+                titleText.textContent = "Iniciar Sesión (Admin)";
+                loginForm.action = "admin/menuAdmin.html"; // Redirige al panel del admin
+                toggleLink.textContent = "Usuario";
+                loginCard.style.borderColor = "#204c6f"; // Borde sutil diferenciador opcional
+            } else {
+                // Regresar a modo Usuario Normal
+                titleText.textContent = "Iniciar Sesión";
+                loginForm.action = "usuario/menuUsuario.html"; // Redirige al menú de usuario
+                toggleLink.textContent = "Admin";
+                loginCard.style.borderColor = "transparent";
+            }
+        }
+    </script>
 
 </body>
 </html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcreditaTech - Dashboard Admin</title>
+    
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inria+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Ruta al archivo CSS principal -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-container">
+        
+        <!-- Barra Lateral de Administrador -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="menuAdmin.html" class="nav-item active" title="Dashboard Admin">
+                    <img src="../img/Inicio.png" alt="Inicio" class="nav-icon">
+                </a>
+                <a href="modificarStatus.html" class="nav-item" title="Registros">
+                    <img src="../img/Progreso.png" alt="Registros" class="nav-icon">
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="perfilAdmin.html" class="nav-item" title="Perfil Admin">
+                    <img src="../img/Perfil.png" alt="Perfil" class="nav-icon">
+                </a>
+                <a href="../login.html" class="nav-item" title="Cerrar Sesión">
+                    <img src="../img/Salir.png" alt="Salir" class="nav-icon">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Área Principal -->
+        <div class="main-area">
+            <!-- Barra Superior con Buscador -->
+            <header class="top-bar admin-top-bar">
+                <div class="logo-container">
+                    <img src="../img/LogoBlanco.png" alt="AcreditaTech Logo" class="logo-img">
+                    <span class="logo-text">AcreditaTech</span>
+                </div>
+                <div class="admin-search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" placeholder="Buscar por filtro..." class="admin-search-input">
+                </div>
+            </header>
+
+            <!-- Contenido del Dashboard Admin -->
+            <main class="admin-content-area">
+                
+                <!-- Botones de Alternancia (Pestañas) -->
+                <div class="admin-tabs-container">
+                    <button type="button" class="admin-tab-btn active" id="btnProceso" onclick="cambiarVista('proceso')">
+                        Padrón Trabajadores en proceso
+                    </button>
+                    <button type="button" class="admin-tab-btn" id="btnCertificados" onclick="cambiarVista('certificados')">
+                        Padrón Trabajadores Certificados
+                    </button>
+                </div>
+
+                <!-- CONTENIDO 1: TABLA DE TRABAJADORES EN PROCESO -->
+                <div class="admin-table-wrapper" id="seccionProceso">
+                    <div class="admin-table-card">
+                        <div class="admin-table-header">
+                            <span>Nombre</span>
+                            <span>Correo</span>
+                            <span>Alcaldía</span>
+                            <span>Oficio</span>
+                            <span>Estatus</span>
+                        </div>
+                        <div class="admin-table-body">
+                            <!-- Filas de ejemplo vacías o dinámicas -->
+                            <div class="admin-table-row"><span>-</span><span>-</span><span>-</span><span>-</span><span>En proceso</span></div>
+                            <div class="admin-table-row"><span>-</span><span>-</span><span>-</span><span>-</span><span>En proceso</span></div>
+                        </div>
+                    </div>
+                    <div class="admin-action-footer">
+                        <button type="button" class="btn-hacer-cambios">Hacer Cambios</button>
+                    </div>
+                </div>
+
+                <!-- CONTENIDO 2: TABLA DE TRABAJADORES CERTIFICADOS -->
+                <div class="admin-table-wrapper" id="seccionCertificados" style="display: none;">
+                    <div class="admin-table-card">
+                        <div class="admin-table-header">
+                            <span>Nombre</span>
+                            <span>Correo</span>
+                            <span>Alcaldía</span>
+                            <span>Oficio</span>
+                            <span>Estatus</span>
+                        </div>
+                        <div class="admin-table-body">
+                            <!-- Filas de ejemplo vacías o dinámicas -->
+                            <div class="admin-table-row"><span>-</span><span>-</span><span>-</span><span>-</span><span>Certificado</span></div>
+                            <div class="admin-table-row"><span>-</span><span>-</span><span>-</span><span>-</span><span>Certificado</span></div>
+                        </div>
+                    </div>
+                    <div class="admin-action-footer">
+                        <button type="button" class="btn-hacer-cambios">Hacer Cambios</button>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Script para alternar la vista entre los dos botones -->
+    <script>
+        function cambiarVista(tipo) {
+            const seccionProceso = document.getElementById('seccionProceso');
+            const seccionCertificados = document.getElementById('seccionCertificados');
+            const btnProceso = document.getElementById('btnProceso');
+            const btnCertificados = document.getElementById('btnCertificados');
+
+            if (tipo === 'proceso') {
+                seccionProceso.style.display = 'block';
+                seccionCertificados.style.display = 'none';
+                btnProceso.classList.add('active');
+                btnCertificados.classList.remove('active');
+            } else {
+                seccionProceso.style.display = 'none';
+                seccionCertificados.style.display = 'block';
+                btnCertificados.classList.add('active');
+                btnProceso.classList.remove('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
