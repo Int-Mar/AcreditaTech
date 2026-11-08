@@ -22,7 +22,9 @@ app.get('/prueba-bd', async (req, res) => {
 
 // RUTAS_AQUI
 const accesoRutas = require('./rutas/acceso_rutas');
+const perfilRutas = require('./rutas/perfil_rutas');
 app.use('/api/acceso', accesoRutas);
+app.use('/api/perfil', perfilRutas);
 
 app.use('/api/acceso', require('./rutas/acceso_rutas'));
 app.use('/api/perfil', require('./rutas/perfil_rutas'));
