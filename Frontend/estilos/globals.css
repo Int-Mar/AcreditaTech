@@ -174,7 +174,7 @@ body.auth-body {
 .auth-left {
     flex: 1;
     position: relative;
-    background-image: url('../img/plantillaoficio.jpg'), url('../img/plantillaoficio.jpg');
+    background-image: url('/img/plantillaoficio.jpg'), url('/img/plantillaoficio.jpg');
     background-position: top center, bottom center;
     background-repeat: no-repeat;
     background-size: 100% 50%;
@@ -337,6 +337,7 @@ body.auth-body {
     width: 60%;
     align-self: center;
     transition: background-color 0.2s;
+    white-space: nowrap;
 }
 
 .btn-submit:hover {
@@ -456,6 +457,7 @@ body.auth-body {
     }
 
     .btn-submit {
+        white-space: nowrap;
         width: 100%;
     }
 }
@@ -467,7 +469,7 @@ body.auth-body {
    VISTA DE LOGIN (Tarjeta Centrada sobre Fondo de Herramientas)
    =================================================== */
 body.login-body {
-    background-image: url('../img/plantillaoficio.jpg');
+    background-image: url('/img/plantillaoficio.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -504,8 +506,8 @@ body.login-body::before {
 
 .login-card {
     background-color: #ffffff;
-    width: 100%;
-    max-width: 520px;
+    width: 480px;
+    max-width: 95vw;
     padding: 35px 40px;
     border-radius: 16px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
@@ -539,6 +541,9 @@ body.login-body::before {
     color: #1b4b73;
     text-decoration: underline;
 }
+
+
+
 
 
 
