@@ -1,0 +1,10 @@
+module.exports = {
+  PUNTAJE_MINIMO: 50,      // se aprueba con MÁS de 50
+  MAX_INTENTOS: 5,
+  HORAS_BLOQUEO: 24,
+  MESES_VIGENCIA: 12,
+  TIPO_TECNICA: 1,
+  TIPO_SALUD: 2,
+  ROL_TRABAJADOR: 1,
+  ROL_ADMINISTRADOR: 2,
+};
