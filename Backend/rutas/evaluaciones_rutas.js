@@ -16,4 +16,7 @@ ruta.get('/:tipo/pregunta', requiereSesion, controlador.verPregunta);
 // POST /api/evaluaciones/:tipo/respuesta → contestar la pregunta actual
 ruta.post('/:tipo/respuesta', requiereSesion, controlador.responder);
 
+// GET /api/evaluaciones/:tipo/estado → calificación, intentos y bloqueo
+ruta.get('/:tipo/estado', requiereSesion, controlador.verEstado);
+
 module.exports = ruta;

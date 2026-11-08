@@ -76,6 +76,12 @@ async function iniciar(req, res) {
       });
     }
 
+    // Si llegó al máximo de intentos y ya pasaron las 24 horas,
+    // los intentos vuelven a 0 y puede intentarlo de nuevo.
+    if (evaluacion.intentos_acumulados >= reglas.MAX_INTENTOS) {
+      await modelo.reiniciarIntentos(evaluacion.id_evaluacion);
+    }
+
     // Si había un test a medias, se continúa donde se quedó.
     // Si no, se empieza un intento nuevo desde el caso 1.
     if (!evaluacion.en_curso) {
@@ -210,7 +216,7 @@ async function responder(req, res) {
     const calificacion = await modelo.sumarPuntos(evaluacion.id_evaluacion);
     const aprobado = calificacion > reglas.PUNTAJE_MINIMO;
     const estado = aprobado ? 'Aprobado' : 'No aprobado';
-    await modelo.cerrarEvaluacion(evaluacion.id_evaluacion, calificacion, estado);
+    await modelo.cerrarEvaluacion(evaluacion.id_evaluacion, calificacion, estado, aprobado);
 
     res.json({
       finalizado: true,
@@ -225,4 +231,55 @@ async function responder(req, res) {
   }
 }
 
-module.exports = { iniciar, verPregunta, responder };
+// ── Ver el estado del test ────────────────────────────────────────────────
+// GET /api/evaluaciones/:tipo/estado
+// Regresa calificación, estado, intentos usados y si está bloqueado.
+async function verEstado(req, res) {
+  const tipo = leerTipo(req);
+  if (!tipo) {
+    return res.status(400).json({ mensaje: 'Tipo de test inválido (usa 1 o 2)' });
+  }
+
+  try {
+    const evaluacion = await modelo.buscarEvaluacion(req.usuario.id_usuario, tipo);
+
+    // Si nunca ha empezado este test, todo está en cero
+    if (!evaluacion) {
+      return res.json({
+        calificacion: 0,
+        estado: 'Pendiente',
+        intentos_usados: 0,
+        max_intentos: reglas.MAX_INTENTOS,
+        bloqueado: false,
+        bloqueado_hasta: null,
+      });
+    }
+
+    const horas = horasQueFaltan(evaluacion);
+    const bloqueado = horas > 0;
+
+    // Si ya pasó el bloqueo, los intentos cuentan como 0 (se reinician al iniciar)
+    const reiniciaran =
+      evaluacion.intentos_acumulados >= reglas.MAX_INTENTOS && !bloqueado;
+
+    res.json({
+      calificacion: Number(evaluacion.calificacion),
+      estado: evaluacion.estado_aprobacion,
+      intentos_usados: reiniciaran ? 0 : evaluacion.intentos_acumulados,
+      max_intentos: reglas.MAX_INTENTOS,
+      bloqueado,
+      bloqueado_hasta: bloqueado
+        ? new Date(
+            new Date(evaluacion.fecha_ultimo_intento).getTime() +
+              reglas.HORAS_BLOQUEO * 60 * 60 * 1000
+          ).toISOString()
+        : null,
+    });
+
+  } catch (error) {
+    console.error('Error al ver el estado:', error.message);
+    res.status(500).json({ mensaje: 'Error al obtener el estado' });
+  }
+}
+
+module.exports = { iniciar, verPregunta, responder, verEstado };
