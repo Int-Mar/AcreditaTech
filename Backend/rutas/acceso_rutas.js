@@ -1,4 +1,14 @@
-const express = require('express');
-const router = express.Router();
+// acceso_rutas.js
+// Le dice al servidor qué controlador usar para cada URL de acceso.
 
-module.exports = router;
+const express    = require('express');
+const ruta       = express.Router();
+const controlador = require('../controladores/acceso_controlador');
+
+// GET  /api/acceso/catalogos  → regresa alcaldías y oficios
+ruta.get('/catalogos', controlador.obtenerCatalogos);
+
+// POST /api/acceso/registro   → registra un usuario nuevo
+ruta.post('/registro', controlador.registrar);
+
+module.exports = ruta;
