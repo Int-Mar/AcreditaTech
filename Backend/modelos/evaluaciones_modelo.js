@@ -89,6 +89,74 @@ async function obtenerOpciones(id_pregunta) {
   return resultado.rows;
 }
 
+// ── Paso 5: responder y calificar ─────────────────────────────────────────
+
+// Busca una opción (con sus puntos) para saber a qué pregunta pertenece
+async function obtenerOpcion(id_opcion) {
+  const resultado = await conexion.query(
+    'SELECT id_opcion, id_pregunta, puntos FROM copcion WHERE id_opcion = $1',
+    [id_opcion]
+  );
+  return resultado.rows[0];
+}
+
+// Guarda la respuesta y avanza al siguiente caso, todo junto:
+// o se hacen las dos cosas o no se hace ninguna.
+// Regresa false si ese caso ya estaba contestado (no se puede contestar dos veces).
+async function registrarRespuesta(id_evaluacion, id_pregunta, id_opcion, puntos, caso) {
+  const cliente = await conexion.connect();
+  try {
+    await cliente.query('BEGIN');
+
+    // Avanza el caso SOLO si todavía está en el caso que se está contestando
+    const avance = await cliente.query(
+      `UPDATE eevaluacion
+       SET caso_actual = caso_actual + 1
+       WHERE id_evaluacion = $1 AND caso_actual = $2`,
+      [id_evaluacion, caso]
+    );
+    if (avance.rowCount === 0) {
+      await cliente.query('ROLLBACK');
+      return false;
+    }
+
+    await cliente.query(
+      `INSERT INTO erespuesta (id_evaluacion, id_pregunta, id_opcion, puntos)
+       VALUES ($1, $2, $3, $4)`,
+      [id_evaluacion, id_pregunta, id_opcion, puntos]
+    );
+
+    await cliente.query('COMMIT');
+    return true;
+  } catch (error) {
+    await cliente.query('ROLLBACK');
+    throw error;
+  } finally {
+    cliente.release();
+  }
+}
+
+// Suma los puntos de todas las respuestas de esta evaluación
+async function sumarPuntos(id_evaluacion) {
+  const resultado = await conexion.query(
+    `SELECT COALESCE(SUM(puntos), 0)::int AS total
+     FROM erespuesta
+     WHERE id_evaluacion = $1`,
+    [id_evaluacion]
+  );
+  return resultado.rows[0].total;
+}
+
+// Termina el test: guarda la calificación y el estado
+async function cerrarEvaluacion(id_evaluacion, calificacion, estado) {
+  await conexion.query(
+    `UPDATE eevaluacion
+     SET calificacion = $2, estado_aprobacion = $3, en_curso = false
+     WHERE id_evaluacion = $1`,
+    [id_evaluacion, calificacion, estado]
+  );
+}
+
 module.exports = {
   obtenerOficioUsuario,
   buscarEvaluacion,
@@ -97,4 +165,8 @@ module.exports = {
   contarPreguntas,
   obtenerPreguntaPorPosicion,
   obtenerOpciones,
+  obtenerOpcion,
+  registrarRespuesta,
+  sumarPuntos,
+  cerrarEvaluacion,
 };
