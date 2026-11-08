@@ -1,0 +1,1763 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inria Serif', serif;
+}
+
+/* ===================================================
+   1. ESTILOS PARA LA PÁGINA DE INICIO (INDEX)
+   =================================================== */
+body {
+    background: linear-gradient(135deg, #253A49 0%, #365164 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Barra de Navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: transparent;
+}
+
+/* Alineación del Logo y Texto */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo img {
+    height: 42px;
+    display: block;
+}
+
+.logo-text {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+/* Enlaces del Header */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    padding: 9px 22px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #1a364a;
+}
+
+.btn-primary {
+    background-color: #1b4b73;
+    color: #ffffff;
+}
+
+/* Contenido Principal (Hero Section) */
+.hero-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.hero-subtitle {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.hero-description {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 40px;
+}
+
+.btn-start {
+    font-family: 'Inter', sans-serif;
+    background-color: #699cc3;
+    color: #ffffff;
+    padding: 12px 60px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-start:hover {
+    background-color: #588bb2;
+}
+
+
+/* ===================================================
+   2. VISTAS DE AUTENTICACIÓN / REGISTRO (.auth-body)
+   =================================================== */
+body.auth-body {
+    background-color: #5d6163;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.auth-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Lado Izquierdo: Branding e Imagen de Fondo */
+.auth-left {
+    flex: 1;
+    position: relative;
+    background-image: url('../img/plantillaoficio.jpg'), url('../img/plantillaoficio.jpg');
+    background-position: top center, bottom center;
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.auth-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 58, 73, 0.72);
+    z-index: 1;
+}
+
+.auth-brand {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+}
+
+.brand-logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.brand-name {
+    font-family: 'Inria Serif', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+/* Lado Derecho: Formulario */
+.auth-right {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.form-logo img {
+    height: 40px;
+}
+
+.form-logo span {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a364a;
+}
+
+.form-title-badge {
+    background-color: #f7931e;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Formulario e Inputs */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #222222;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #555555;
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: #aaaaaa;
+}
+
+/* Alineación horizontal del Checkbox y Términos */
+.terms-group {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 8px;
+}
+
+.terms-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+.terms-group .terms-label {
+    text-align: left;
+    margin: 0;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #333333;
+}
+
+/* Botón Registrarme */
+.btn-submit {
+    font-family: 'Inter', sans-serif;
+    background-color: #1b4b73;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 60%;
+    align-self: center;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #153a59;
+}
+
+/* Ventana Modal de Términos y Condiciones */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-card {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 520px;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.modal-logo img {
+    height: 38px;
+}
+
+.modal-logo-text {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a364a;
+}
+
+.terms-box {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.terms-box h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 8px;
+}
+
+.terms-box p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #666666;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.btn-modal {
+    font-family: 'Inter', sans-serif;
+    background-color: #1b4b73;
+    color: #ffffff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-modal:hover {
+    background-color: #153a59;
+}
+
+
+/* ===================================================
+   3. ADAPTABILIDAD RESPONSIVA (MÓVILES Y TABLETS)
+   =================================================== */
+@media (max-width: 850px) {
+    .auth-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .auth-left {
+        flex: none;
+        padding: 30px 20px;
+        background-size: cover;
+    }
+
+    .brand-logo {
+        width: 120px;
+    }
+
+    .brand-name {
+        font-size: 2.2rem;
+    }
+
+    .auth-right {
+        padding: 30px 20px;
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+
+
+
+/* ===================================================
+   VISTA DE LOGIN (Tarjeta Centrada sobre Fondo de Herramientas)
+   =================================================== */
+body.login-body {
+    background-image: url('../img/plantillaoficio.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Capa oscura translúcida sobre el fondo */
+body.login-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 58, 73, 0.72);
+    z-index: 1;
+}
+
+.login-card-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 520px;
+    padding: 35px 40px;
+    border-radius: 16px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.login-title-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333333;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.admin-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #666666;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.admin-link:hover {
+    color: #1b4b73;
+    text-decoration: underline;
+}
+
+
+
+
+
+/* ===================================================
+   ESTILOS PARA EL PANEL DE USUARIO (DASHBOARD)
+   =================================================== */
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #253A49;
+}
+
+/* Barra Lateral de Navegación (Sidebar) */
+.sidebar {
+    width: 75px;
+    background-color: #172a3a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-nav, .sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-item {
+    color: #a0aec0;
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Área Derecha Principal */
+.main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #253A49;
+}
+
+/* Barra Superior del Panel */
+.top-bar {
+    height: 70px;
+    background-color: #1c303f;
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+    border-bottom: 2px solid #142530;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 35px;
+    width: auto;
+}
+
+.logo-text {
+    font-family: 'Inria Serif', serif;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* Rejilla de Tarjetas (Tests) */
+.content-grid {
+    flex: 1;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
+    gap: 30px;
+    align-content: start;
+    overflow-y: auto;
+}
+
+/* Tarjeta Individual de Test */
+.test-card {
+    background-color: #f7f5ef; /* Tono crema claro de los mockups */
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-height: 170px;
+    transition: transform 0.2s ease;
+}
+
+.test-card:hover {
+    transform: translateY(-3px);
+}
+
+.card-info h3 {
+    font-family: 'Inria Serif', serif;
+    color: #1b313f;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card-info p {
+    font-family: 'Inter', sans-serif;
+    color: #555555;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+/* Botón Empezar dentro de la tarjeta */
+.btn-empezar {
+    font-family: 'Inter', sans-serif;
+    align-self: center;
+    background-color: #1b313f;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 9px 40px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+    text-align: center;
+}
+
+.btn-empezar:hover {
+    background-color: #153a59;
+}
+
+
+
+
+.sidebar .nav-item img {
+    height: 44px;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar .nav-item img:hover {
+    opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+
+/* ===================================================
+   ESTILOS PARA LA VISTA DE PERFIL (USUARIO Y ADMIN)
+   =================================================== */
+
+.profile-content-area {
+    flex: 1;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.profile-card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    margin-top: 40px;
+}
+
+/* Avatar circular superior */
+.profile-avatar-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+    margin-bottom: -55px;
+}
+
+.profile-avatar-circle {
+    width: 110px;
+    height: 110px;
+    background-color: #e5e0d8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.profile-avatar-circle i {
+    font-size: 3.5rem;
+    color: #4a5568;
+}
+
+/* Tarjeta azul principal del perfil */
+.profile-card {
+    background-color: #173852; /* Tono azul profundo del diseño */
+    border-radius: 16px;
+    padding: 70px 40px 35px 40px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    border: 2px solid #204c6f;
+}
+
+.profile-user-name {
+    font-family: 'Inria Serif', serif;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.profile-form-box {
+    background-color: #1c3b57;
+    border: 2px solid #2b5d84;
+    border-radius: 12px;
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-section-title {
+    font-family: 'Anton', sans-serif;
+    color: #ffffff;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+/* Cajas de campos de texto simulados */
+.profile-field {
+    background-color: #d8d8d8;
+    color: #111111;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.password-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eye-icon {
+    color: #333333;
+    cursor: pointer;
+}
+
+/* Botón hacer cambios */
+.btn-hacer-cambios {
+    font-family: 'Inter', sans-serif;
+    background-color: #12283a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 35px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 10px;
+    align-self: center;
+    transition: background-color 0.2s;
+}
+
+.btn-hacer-cambios:hover {
+    background-color: #0b1a26;
+}
+
+
+
+
+
+/* ===================================================
+   DISEÑO RESPONSIVO Y EXPANDIBLE - PROGRESO DE USUARIO
+   =================================================== */
+
+/* Asegurar que el contenedor abarque toda la pantalla sin desbordamientos */
+.dashboard-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #1b313f;
+}
+
+.main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Grilla de contenido flexible que se expande por toda la pantalla */
+.progress-content-grid {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto; /* Permite scroll vertical si la pantalla es muy baja */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Tarjeta contenedora adaptable */
+.progress-card {
+    background-color: #f7f5ef;
+    border-radius: 14px;
+    padding: 22px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.progress-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.progress-card-info h3 {
+    font-family: 'Inria Serif', serif;
+    color: #1b313f;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.progress-card-info p {
+    font-family: 'Inter', sans-serif;
+    color: #555555;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.btn-volver-empezar {
+    font-family: 'Inter', sans-serif;
+    background-color: #1b313f;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 25px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    width: fit-content;
+    transition: background-color 0.2s;
+    text-align: center;
+}
+
+.btn-volver-empezar:hover {
+    background-color: #153a59;
+}
+
+/* Cuadro amarillo del porcentaje */
+.progress-badge-box {
+    background-color: #f4d06f;
+    border: 2px solid #d4a337;
+    border-radius: 12px;
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.progress-percentage {
+    font-family: 'Anton', sans-serif;
+    color: #1b313f;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.progress-details {
+    font-family: 'Inter', sans-serif;
+    color: #333333;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ===================================================
+   MEDIA QUERIES (ADAPTACIÓN PARA PANTALLAS PEQUEÑAS)
+   =================================================== */
+@media (max-width: 768px) {
+    /* Si la pantalla es de tablet o teléfono, apilamos los elementos de la tarjeta verticalmente */
+    .progress-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+    }
+
+    .progress-badge-box {
+        width: 100%;
+        min-width: unset;
+        margin-top: 10px;
+    }
+
+    .progress-content-grid {
+        padding: 15px;
+    }
+}
+
+
+
+
+
+/* ===================================================
+   ESTILOS PARA LA VISTA DE CONSULTAR APP
+   =================================================== */
+
+.consultar-app-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.consultar-app-card {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.consultar-app-title {
+    font-family: 'Inria Serif', serif;
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.consultar-app-subtitle {
+    font-family: 'Inria Serif', serif;
+    color: #a0aec0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.consultar-app-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.consultar-app-text-block p {
+    font-family: 'Inria Serif', serif;
+    color: #cbd5e1;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.consultar-app-action {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.app-name-label {
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Botón Descargar */
+.btn-descargar {
+    font-family: 'Inter', sans-serif;
+    background-color: #1b4b73;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 45px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    width: fit-content;
+    text-align: center;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-descargar:hover {
+    background-color: #153a59;
+}
+
+/* Adaptabilidad responsiva para pantallas pequeñas */
+@media (max-width: 768px) {
+    .consultar-app-content {
+        padding: 20px;
+    }
+    
+    .consultar-app-title {
+        font-size: 1.8rem;
+    }
+
+    .consultar-app-text-block p {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+
+
+
+
+/* ===================================================
+   ESTILOS PARA LAS VISTAS DE QUIZ (TIPO SOCRATIVE)
+   =================================================== */
+
+.quiz-content-area {
+    flex: 1;
+    padding: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.quiz-card-socrative {
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quiz-counter {
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.quiz-question-title {
+    font-family: 'Inria Serif', serif;
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ===================================================
+   ESTILOS CORREGIDOS PARA LOS BOTONES DE OPCIONES
+   =================================================== */
+
+.quiz-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.quiz-option-btn {
+    background-color: #f7f5ef; /* Tono crema claro */
+    color: #111111;            /* Texto oscuro legible */
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 14px 20px;
+    width: 100%;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+/* Efecto al pasar el cursor por encima */
+.quiz-option-btn:hover {
+    background-color: #eae5dc;
+    border-color: #1b313f;
+}
+
+/* Efecto cuando el botón está seleccionado o activo (útil para JavaScript después) */
+.quiz-option-btn:active,
+.quiz-option-btn.selected {
+    background-color: #1b313f;
+    color: #ffffff;
+    border-color: #1b313f;
+}
+
+/* Contenedor de la imagen central para T/F */
+.quiz-image-box {
+    background-color: #ffffff;
+    border-radius: 6px;
+    height: 180px;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #111111;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Contenedor de botones Verdadero / Falso */
+.quiz-tf-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.quiz-tf-box {
+    background-color: #f7f5ef;
+    border-radius: 8px;
+    height: 45px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #111111;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: background-color 0.2s;
+}
+
+.quiz-tf-box:hover {
+    background-color: #e5e0d8;
+}
+
+/* Botón Subir respuesta inferior */
+.quiz-submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.btn-subir-respuesta {
+    font-family: 'Inter', sans-serif;
+    background-color: #163147;
+    border: 1px solid #2a4d6c;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 40px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-subir-respuesta:hover {
+    background-color: #1d3e5b;
+}
+
+/* Ajustes responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .quiz-content-area {
+        padding: 20px;
+    }
+}
+
+
+
+
+
+/* ===================================================
+   ESTILOS PARA LA VISTA DE VENTANA DE RESULTADOS
+   =================================================== */
+
+.result-content-area {
+    flex: 1;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.result-card-container {
+    background-color: #f7f5ef; /* Tono crema claro de las tarjetas */
+    border-radius: 16px;
+    padding: 35px 50px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    box-sizing: border-box;
+}
+
+.result-main-title {
+    font-family: 'Inria Serif', serif;
+    color: #1b313f;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.result-subtitle {
+    font-family: 'Inter', sans-serif;
+    color: #333333;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: -8px;
+}
+
+/* Caja de Porcentaje base */
+.result-score-box {
+    border-radius: 10px;
+    padding: 15px 25px;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: 2px solid rgba(0,0,0,0.1);
+    margin: 5px 0;
+}
+
+/* Variante Verde (Aprobado / Apto - 80%) */
+.result-score-box.success {
+    background-color: #a8e6cf; 
+    border-color: #5bb48b;
+}
+
+/* Variante Roja (No aprobado / No apto - 20%) */
+.result-score-box.danger {
+    background-color: #ffb3b3; 
+    border-color: #e06d6d;
+}
+
+.result-percentage {
+    font-family: 'Anton', sans-serif;
+    color: #1b313f;
+    font-size: 2.2rem;
+    line-height: 1.1;
+}
+
+.result-aciertos {
+    font-family: 'Inter', sans-serif;
+    color: #1b313f;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.result-message-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 480px;
+}
+
+.result-status-heading {
+    font-family: 'Inria Serif', serif;
+    color: #1b313f;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.result-status-text {
+    font-family: 'Inter', sans-serif;
+    color: #4a5568;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.result-action-container {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Botón Volver a mi panel */
+.btn-volver-panel {
+    font-family: 'Inter', sans-serif;
+    background-color: #1b313f;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 45px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-volver-panel:hover {
+    background-color: #153a59;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .result-card-container {
+        padding: 25px 20px;
+    }
+}
+
+
+
+
+
+
+
+
+/* ===================================================
+   ESTILOS PARA VENTANAS TEST (INICIO DE CUESTIONARIO)
+   =================================================== */
+
+.test-intro-content-area {
+    flex: 1;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.test-intro-card {
+    background-color: #f7f5ef; /* Tono crema claro de la tarjeta */
+    border-radius: 16px;
+    padding: 40px 50px;
+    width: 100%;
+    max-width: 680px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.test-intro-title {
+    font-family: 'Inria Serif', serif;
+    color: #1b313f;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.test-intro-desc {
+    font-family: 'Inter', sans-serif;
+    color: #333333;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 520px;
+}
+
+.test-intro-action {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.btn-iniciar-test {
+    font-family: 'Inter', sans-serif;
+    background-color: #1b313f;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 50px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-iniciar-test:hover {
+    background-color: #153a59;
+}
+
+.test-intro-footer-label {
+    font-family: 'Inter', sans-serif;
+    color: #666666;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+/* Ajustes responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .test-intro-card {
+        padding: 30px 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===================================================
+   ESTILOS PARA EL PANEL DE ADMINISTRADOR
+   =================================================== */
+
+.admin-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.admin-search-container {
+    position: relative;
+    width: 300px;
+}
+
+.admin-search-input {
+    width: 100%;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px 8px 35px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #333333;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666666;
+    font-size: 0.85rem;
+}
+
+.admin-content-area {
+    flex: 1;
+    padding: 25px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Botones de alternancia superior (Pestañas) */
+.admin-tabs-container {
+    display: flex;
+    gap: 20px;
+}
+
+.admin-tab-btn {
+    background-color: #173852;
+    color: #ffffff;
+    border: 2px solid #204c6f;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-family: 'Inria Serif', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
+
+/* Estado Activo del Botón (Fondo Blanco, Texto Oscuro) */
+.admin-tab-btn.active {
+    background-color: #ffffff;
+    color: #173852;
+    border-color: #ffffff;
+}
+
+.admin-tab-btn:hover {
+    opacity: 0.9;
+}
+
+/* Estructura de la Tabla del Admin */
+.admin-table-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.admin-table-card {
+    background-color: #f7f5ef;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-table-header {
+    background-color: #1b313f;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 12px 15px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.admin-table-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
+}
+
+.admin-table-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #e5e0d8;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #444444;
+}
+
+.admin-action-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
+
+/* ===================================================
+   ESTILOS PARA LA VISTA DE MODIFICAR STATUS (ADMIN)
+   =================================================== */
+
+.status-content-area {
+    flex: 1;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.status-card {
+    background-color: #ffffff; /* Tarjeta blanca */
+    border-radius: 16px;
+    padding: 40px 50px;
+    width: 100%;
+    max-width: 620px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.status-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.status-card-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-card-logo img {
+    height: 32px;
+}
+
+.status-card-logo span {
+    font-family: 'Anton', sans-serif;
+    color: #1b313f;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.status-card-title {
+    font-family: 'Inria Serif', serif;
+    color: #1b313f;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.status-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.status-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.status-form-group label {
+    font-family: 'Inter', sans-serif;
+    color: #1b313f;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.status-form-group input,
+.status-form-group select {
+    background-color: #f7f5ef;
+    border: 1px solid #dcd6cd;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #333333;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.status-form-group input:focus,
+.status-form-group select:focus {
+    border-color: #1b313f;
+}
+
+.btn-status-submit {
+    font-family: 'Inter', sans-serif;
+    background-color: #1b313f;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    width: 100%;
+}
+
+.btn-status-submit:hover {
+    background-color: #153a59;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .status-card {
+        padding: 30px 20px;
+    }
+}
