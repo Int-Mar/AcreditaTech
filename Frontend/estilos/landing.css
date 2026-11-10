@@ -1,0 +1,426 @@
+.at {
+  --azul: #1B4677;
+  --hondo: #0F2B4A;
+  --claro: #DCE7F4;
+  --papel: #FFFFFF;
+  --tinta: #14243A;
+  --gris: #55657A;
+  --obra: #F88F1A;
+  font-family: var(--at-body),system-ui,sans-serif;
+  color: var(--tinta);
+  background: var(--papel);
+  line-height: 1.55;
+}
+
+.at * {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.at h1,
+.at h2,
+.at h3 {
+  font-family: var(--at-display),sans-serif;
+  line-height: 1.05;
+  margin: 0;
+  letter-spacing: .01em;
+}
+
+.at a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.at :focus-visible {
+  outline: 3px solid var(--obra);
+  outline-offset: 3px;
+}
+
+.at-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 5%;
+  background: var(--azul);
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.at-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--at-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.at-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.at-nav {
+  display: flex;
+  gap: 28px;
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+.at-nav a {
+  opacity: .85;
+}
+
+.at-nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.at-header-cta {
+  display: flex;
+  gap: 10px;
+}
+
+.at-btn {
+  display: inline-block;
+  padding: .7rem 1.4rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: .95rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform .15s,background .15s;
+}
+
+.at-btn:hover {
+  transform: translateY(-2px);
+}
+
+.at .at-btn-light {
+  background: #fff;
+  color: var(--azul);
+}
+
+.at .at-btn-line {
+  border-color: rgba(255,255,255,.7);
+  color: #fff;
+}
+
+.at-btn-line:hover {
+  background: rgba(255,255,255,.12);
+}
+
+.at .at-btn-obra {
+  background: var(--obra);
+  color: var(--hondo);
+}
+
+.at-btn-obra:hover {
+  background: #FA9E3A;
+}
+
+.at-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  padding: 120px 5% 130px;
+  color: #fff;
+  background-color: var(--azul);
+  background-image: linear-gradient(rgba(27,70,119,.9),rgba(27,70,119,.9)),url('/img/plantillaoficio.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.at-hero h1 {
+  font-size: clamp(3rem,7vw,5.6rem);
+  font-weight: 700;
+  max-width: 14ch;
+  margin: 0 auto;
+}
+
+.at-hero-text p {
+  font-size: 1.2rem;
+  max-width: 38rem;
+  margin: 22px auto 32px;
+  color: #E4ECF6;
+}
+
+.at-hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.at-objetivo h3 {
+  font-size: 1.5rem;
+  color: var(--azul);
+  margin-bottom: 10px;
+}
+
+.at-sec {
+  padding: 84px 5%;
+  scroll-margin-top: 64px;
+}
+
+.at-sec-claro {
+  background: var(--claro);
+}
+
+.at-sec-hondo {
+  background: var(--hondo);
+  color: #fff;
+}
+
+.at-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.at-two {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.at .at-wrap h2 {
+  font-size: clamp(2rem,4vw,3rem);
+  font-weight: 700;
+  color: var(--azul);
+}
+
+.at .at-sec-hondo h2 {
+  color: #fff;
+}
+
+.at-two>p,
+.at-two div>p {
+  font-size: 1.15rem;
+  color: var(--gris);
+  margin: 0;
+}
+
+.at-sec-hondo .at-two div>p {
+  color: #C9D8EA;
+  margin-top: 14px;
+}
+
+.at-h2-sep {
+  margin-top: 80px!important;
+}
+
+.at-oficios {
+  list-style: none;
+  margin: 36px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+}
+
+.at-oficios li {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding-bottom: 18px;
+}
+
+.at-foto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/2;
+  background: #F8F1E0 url('/img/plantillaoficio.jpg') no-repeat;
+  background-size: 200% auto;
+}
+
+.at-foto-albanileria {
+  background-position: 0% 68%;
+}
+
+.at-foto-carpinteria {
+  background-position: 100% 68%;
+}
+
+.at-foto-electricidad {
+  background-position: 0% 100%;
+}
+
+.at-foto-plomeria {
+  background-position: 100% 100%;
+}
+
+.at-oficios h3 {
+  font-size: 1.5rem;
+  color: var(--azul);
+  margin: 16px 18px 6px;
+}
+
+.at-oficios p {
+  margin: 0 18px;
+  color: var(--gris);
+  font-size: .95rem;
+}
+
+.at-pasos {
+  list-style: none;
+  margin: 36px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 24px;
+  counter-reset: p;
+}
+
+.at-pasos li {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.at-num {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--azul);
+  color: #fff;
+  font-family: var(--at-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  display: grid;
+  place-items: center;
+}
+
+.at-pasos h3 {
+  font-size: 1.3rem;
+  color: var(--tinta);
+  margin-bottom: 6px;
+}
+
+.at-pasos p {
+  margin: 0;
+  color: var(--gris);
+  font-size: .95rem;
+}
+
+.at-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.at-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  font-size: .92rem;
+}
+
+.at-form input,
+.at-form textarea {
+  font: inherit;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #3E6291;
+  background: #fff;
+  color: var(--tinta);
+}
+
+.at-form .at-btn {
+  align-self: flex-start;
+}
+
+.at-gracias {
+  margin: 0;
+  color: var(--obra);
+  font-weight: 600;
+}
+
+.at-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 24px 5%;
+  background: var(--azul);
+  color: #DCE7F4;
+  font-size: .9rem;
+}
+
+.at-footer p {
+  margin: 0;
+}
+
+@media (max-width:900px) {
+  .at-hero,
+  .at-two {
+    grid-template-columns: 1fr;
+  }
+
+  .at-oficios,
+  .at-pasos {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .at-nav {
+    display: none;
+  }
+
+  .at-header-cta {
+    margin-left: auto;
+  }
+}
+
+@media (max-width:520px) {
+  .at-oficios,
+  .at-pasos {
+    grid-template-columns: 1fr;
+  }
+
+  .at-header-cta .at-btn-line {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .at-btn {
+    transition: none;
+  }
+
+  .at-btn:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion:no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (max-width:520px) {
+  .at-header {
+    gap: 12px;
+  }
+
+  .at-logo {
+    font-size: 1.3rem;
+  }
+
+  .at-logo img {
+    height: 32px;
+  }
+
+  .at-header-cta .at-btn {
+    padding: .55rem 1rem;
+  }
+}
