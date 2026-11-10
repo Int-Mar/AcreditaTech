@@ -36,7 +36,8 @@ export default function MenuUsuario() {
           <Link href="/usuario/perfil" className="nav-item" title="Perfil">
             <img src="/img/Perfil.png" alt="Perfil" className="nav-icon" />
           </Link>
-          <button onClick={cerrarSesion} className="nav-item" title="Salir" style={{background:'none', border:'none', cursor:'pointer', padding:0}}>
+          <button onClick={cerrarSesion} className="nav-item" title="Salir"
+            style={{background:'none', border:'none', cursor:'pointer', padding:0}}>
             <img src="/img/Salir.png" alt="Salir" className="nav-icon" />
           </button>
         </div>
@@ -57,7 +58,7 @@ export default function MenuUsuario() {
               <h3>Salud Ocupacional</h3>
               <p>Ingresa al test y averigua si eres una persona apta</p>
             </div>
-            <a href="#" className="btn-empezar">Empezar</a>
+            <a href="/usuario/test-salud" className="btn-empezar">Empezar</a>
           </div>
 
           <div className="test-card">
@@ -65,7 +66,7 @@ export default function MenuUsuario() {
               <h3>Test Técnico</h3>
               <p>Ingresa al test y averigua si eres una persona apta</p>
             </div>
-            <a href="#" className="btn-empezar">Empezar</a>
+            <a href="/usuario/test-tecnico" className="btn-empezar">Empezar</a>
           </div>
 
           <div className="test-card">

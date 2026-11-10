@@ -41,6 +41,14 @@ export default function Login() {
 
       <div className="login-card-container">
         <div className="login-card" style={{ borderColor: esAdmin ? '#204c6f' : 'transparent' }}>
+          
+          <div style={{marginBottom: '8px'}}>
+            <a href="/" style={{display:'inline-flex', alignItems:'center', gap:'6px',
+              color:'#1b4b73', textDecoration:'none', fontSize:'0.9rem', fontWeight:'500'}}>
+              ← Regresar
+            </a>
+          </div>
+          
           <div className="form-header">
             <div className="form-logo">
               <img src="/img/LogoAzul.png" alt="AcreditaTech" />
