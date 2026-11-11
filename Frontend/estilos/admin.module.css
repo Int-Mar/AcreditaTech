@@ -1,0 +1,76 @@
+
+.barraFiltros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.selectFiltro {
+  background-color: #ffffff;
+  color: #173852;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 12px;
+  min-width: 180px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.btnFiltro {
+  background-color: #173852;
+  color: #ffffff;
+  border: 2px solid #204c6f;
+  border-radius: 8px;
+  padding: 8px 22px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnFiltro:hover {
+  opacity: 0.9;
+}
+
+.mensajeTabla {
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #666666;
+}
+
+.mensajeError {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: #ffb4a8;
+}
+
+.mensajeFormulario {
+  margin-top: 14px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.exito { color: #1e7e34; }
+.error { color: #c0392b; }
+
+.inputEditable {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 4px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #1b4b73;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111;
+}
