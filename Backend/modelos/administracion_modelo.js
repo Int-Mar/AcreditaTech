@@ -1,6 +1,74 @@
 const conexion = require('../conexion');
 
-// Lista de usuarios con buscador y filtros (nunca regresa la contraseña)
+// Estatus válidos (los mismos que usa el avance de la Persona 3)
+const ESTATUS = {
+  proceso: ['En Diagnóstico'],
+  preconstancia: ['Preparación Completada', 'Vencida'],
+};
+ESTATUS.todos = [...ESTATUS.proceso, ...ESTATUS.preconstancia];
+
+// ---------- Padrón (lo usa menu.js) ----------
+async function obtenerPadron(tipo, { alcaldia, oficio, estatus }) {
+  const valores = [ESTATUS[tipo]];
+  const condiciones = ['u.id_tipo_usuario = 1', 'u.estatus = ANY($1)'];
+
+  if (alcaldia) {
+    valores.push(alcaldia);
+    condiciones.push(`u.id_alcaldia = $${valores.length}`);
+  }
+  if (oficio) {
+    valores.push(oficio);
+    condiciones.push(`u.id_oficio = $${valores.length}`);
+  }
+  if (estatus) {
+    valores.push(estatus);
+    condiciones.push(`u.estatus = $${valores.length}`);
+  }
+
+  const resultado = await conexion.query(
+    `SELECT u.id_usuario, u.nombre, u.correo, u.estatus,
+            o.nombre_oficio, a.nombre_alcaldia
+       FROM musuario u
+       JOIN coficio o   ON o.id_oficio = u.id_oficio
+       JOIN calcaldia a ON a.id_alcaldia = u.id_alcaldia
+      WHERE ${condiciones.join(' AND ')}
+      ORDER BY u.nombre`,
+    valores
+  );
+  return resultado.rows;
+}
+
+// ---------- Cambiar estatus por correo (lo usa modificar-estatus.js) ----------
+async function cambiarEstatusPorCorreo(correo, estatus) {
+  const resultado = await conexion.query(
+    `UPDATE musuario SET estatus = $1
+      WHERE LOWER(correo) = LOWER($2) AND id_tipo_usuario = 1
+      RETURNING id_usuario, nombre, estatus`,
+    [estatus, correo]
+  );
+  return resultado.rows[0] || null;
+}
+
+// ---------- Perfil del administrador ----------
+async function obtenerPerfilAdmin(id) {
+  const r = await conexion.query(
+    `SELECT id_usuario, nombre, correo, telefono, foto_url
+       FROM musuario WHERE id_usuario = $1`,
+    [id]
+  );
+  return r.rows[0] || null;
+}
+
+async function actualizarNombreAdmin(id, nombre) {
+  const r = await conexion.query(
+    `UPDATE musuario SET nombre = $1 WHERE id_usuario = $2
+      RETURNING id_usuario, nombre`,
+    [nombre, id]
+  );
+  return r.rows[0] || null;
+}
+
+// ---------- Lista de usuarios con buscador y filtros ----------
 async function listarUsuarios({ q, id_oficio, id_alcaldia }) {
   const condiciones = [];
   const valores = [];
@@ -35,7 +103,6 @@ async function listarUsuarios({ q, id_oficio, id_alcaldia }) {
   return resultado.rows;
 }
 
-// Un usuario completo, con sus evaluaciones
 async function obtenerUsuario(id) {
   const usuario = await conexion.query(
     `SELECT u.id_usuario, u.nombre, u.correo, u.telefono, u.curp, u.foto_url,
@@ -62,7 +129,6 @@ async function obtenerUsuario(id) {
   return { ...usuario.rows[0], evaluaciones: evaluaciones.rows };
 }
 
-// Editar datos (lo que no se envía se queda igual)
 async function actualizarUsuario(id, datos) {
   const resultado = await conexion.query(
     `UPDATE musuario
@@ -85,7 +151,6 @@ async function actualizarUsuario(id, datos) {
   return resultado.rows[0] || null;
 }
 
-// Bloquear o desbloquear
 async function cambiarBloqueo(id, bloqueado) {
   const resultado = await conexion.query(
     `UPDATE musuario SET bloqueado = $1
@@ -96,7 +161,7 @@ async function cambiarBloqueo(id, bloqueado) {
   return resultado.rows[0] || null;
 }
 
-// Estadísticas generales (solo cuenta trabajadores, no administradores)
+// ---------- Estadísticas ----------
 async function obtenerEstadisticas() {
   const total = await conexion.query(
     `SELECT COUNT(*)::int AS total FROM musuario WHERE id_tipo_usuario = 1`
@@ -149,6 +214,11 @@ async function obtenerEstadisticas() {
 }
 
 module.exports = {
+  ESTATUS,
+  obtenerPadron,
+  cambiarEstatusPorCorreo,
+  obtenerPerfilAdmin,
+  actualizarNombreAdmin,
   listarUsuarios,
   obtenerUsuario,
   actualizarUsuario,
