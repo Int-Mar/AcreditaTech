@@ -40,4 +40,42 @@ async function guardarFicha(id_usuario, d) {
   return r.rows[0];
 }
 
-module.exports = { obtenerFicha, guardarFicha };
+// Respuestas del test de salud del usuario, con su riesgo y recomendación
+async function obtenerRespuestasSalud(id_usuario) {
+  const ev = await conexion.query(
+    `SELECT id_evaluacion, estado_aprobacion
+       FROM eevaluacion
+      WHERE id_usuario = $1 AND tipo_evaluacion = 2`,
+    [id_usuario]
+  );
+  if (ev.rows.length === 0) return null;
+
+  const id_evaluacion = ev.rows[0].id_evaluacion;
+
+  const respuestas = await conexion.query(
+    `SELECT p.id_pregunta, p.tema, p.texto, p.tipo_pregunta,
+            o.texto AS opcion, r.puntos, o.nivel_riesgo, o.recomendacion
+       FROM erespuesta r
+       JOIN cpregunta p ON p.id_pregunta = r.id_pregunta
+       JOIN copcion o   ON o.id_opcion = r.id_opcion
+      WHERE r.id_evaluacion = $1
+      ORDER BY p.id_pregunta, r.id_respuesta`,
+    [id_evaluacion]
+  );
+
+  const reglas = await conexion.query(
+    `SELECT id_pregunta, puntos_min, puntos_max, nivel_riesgo, recomendacion
+       FROM cregla_ficha
+      WHERE id_pregunta IN (
+        SELECT id_pregunta FROM erespuesta WHERE id_evaluacion = $1)`,
+    [id_evaluacion]
+  );
+
+  return {
+    estado: ev.rows[0].estado_aprobacion,
+    respuestas: respuestas.rows,
+    reglas: reglas.rows,
+  };
+}
+
+module.exports = { obtenerFicha, guardarFicha, obtenerRespuestasSalud };
