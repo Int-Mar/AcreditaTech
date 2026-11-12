@@ -96,9 +96,62 @@ async function cambiarBloqueo(id, bloqueado) {
   return resultado.rows[0] || null;
 }
 
+// Estadísticas generales (solo cuenta trabajadores, no administradores)
+async function obtenerEstadisticas() {
+  const total = await conexion.query(
+    `SELECT COUNT(*)::int AS total FROM musuario WHERE id_tipo_usuario = 1`
+  );
+
+  const porEstado = await conexion.query(
+    `SELECT estatus, COUNT(*)::int AS cantidad
+       FROM musuario
+      WHERE id_tipo_usuario = 1
+      GROUP BY estatus
+      ORDER BY estatus`
+  );
+
+  const porOficio = await conexion.query(
+    `SELECT o.nombre_oficio, COUNT(u.id_usuario)::int AS cantidad
+       FROM coficio o
+       LEFT JOIN musuario u
+              ON u.id_oficio = o.id_oficio AND u.id_tipo_usuario = 1
+      GROUP BY o.id_oficio, o.nombre_oficio
+      ORDER BY o.id_oficio`
+  );
+
+  const porAlcaldia = await conexion.query(
+    `SELECT a.nombre_alcaldia, COUNT(u.id_usuario)::int AS cantidad
+       FROM calcaldia a
+       LEFT JOIN musuario u
+              ON u.id_alcaldia = a.id_alcaldia AND u.id_tipo_usuario = 1
+      GROUP BY a.id_alcaldia, a.nombre_alcaldia
+      ORDER BY a.id_alcaldia`
+  );
+
+  const promedios = await conexion.query(
+    `SELECT t.id_tipo_evaluacion, t.nombre,
+            ROUND(AVG(e.calificacion), 2) AS promedio
+       FROM ctipo_evaluacion t
+       LEFT JOIN eevaluacion e
+              ON e.tipo_evaluacion = t.id_tipo_evaluacion
+             AND e.fecha_ultimo_intento IS NOT NULL
+      GROUP BY t.id_tipo_evaluacion, t.nombre
+      ORDER BY t.id_tipo_evaluacion`
+  );
+
+  return {
+    total_usuarios: total.rows[0].total,
+    por_estado: porEstado.rows,
+    por_oficio: porOficio.rows,
+    por_alcaldia: porAlcaldia.rows,
+    promedio_por_test: promedios.rows,
+  };
+}
+
 module.exports = {
   listarUsuarios,
   obtenerUsuario,
   actualizarUsuario,
   cambiarBloqueo,
+  obtenerEstadisticas,
 };
