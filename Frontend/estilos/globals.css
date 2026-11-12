@@ -1779,3 +1779,73 @@ body.login-body::before {
     height: 48px;
     padding: 0;
 }
+
+.sidebar {
+    width: 220px;
+    align-items: stretch;
+    padding: 20px 12px;
+}
+
+.sidebar-nav,
+.sidebar-bottom {
+    align-items: stretch;
+    gap: 8px;
+}
+
+.sidebar .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+}
+
+.sidebar .nav-item img {
+    height: 32px;
+    width: 32px;
+    flex-shrink: 0;
+}
+
+.sidebar .nav-item::after {
+    content: attr(title);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* El botón "Salir" es un <button>: se alinea igual que los enlaces */
+.sidebar-bottom button.nav-item {
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    padding: 8px 12px !important;
+    text-align: left;
+}
+
+/* En pantallas angostas vuelve a mostrar solo los íconos */
+@media (max-width: 700px) {
+    .sidebar {
+        width: 75px;
+        align-items: center;
+        padding: 20px 0;
+    }
+    .sidebar-nav,
+    .sidebar-bottom {
+        align-items: center;
+    }
+    .sidebar .nav-item {
+        width: auto;
+        justify-content: center;
+    }
+    .sidebar .nav-item::after {
+        display: none;
+    }
+    .sidebar-bottom button.nav-item {
+        width: 48px;
+        height: 48px;
+        justify-content: center;
+        padding: 0 !important;
+    }
+}
