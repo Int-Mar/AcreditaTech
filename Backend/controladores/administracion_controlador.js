@@ -1,12 +1,6 @@
 const modelo = require('../modelos/administracion_modelo');
+const { esIdValido, esNombre } = require('../seguridad/validaciones');
 
-function esIdValido(valor) {
-  return Number.isInteger(Number(valor)) && Number(valor) > 0;
-}
-
-const REGLA_NOMBRE = /^[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]{5,25}$/;
-
-// ---------- Las pantallas menu.js y modificar-estatus.js leen "mensaje" ----------
 function obtenerEstatus(req, res) {
   res.json(modelo.ESTATUS);
 }
@@ -59,7 +53,7 @@ async function obtenerPerfil(req, res) {
 
 async function editarPerfil(req, res) {
   const { nombre } = req.body;
-  if (typeof nombre !== 'string' || !REGLA_NOMBRE.test(nombre)) {
+  if (!esNombre(nombre)) {
     return res.status(400).json({ mensaje: 'Nombre: solo letras, de 5 a 25 caracteres' });
   }
   try {
@@ -103,7 +97,7 @@ async function actualizarUsuario(req, res) {
   }
   const { nombre, telefono, correo, id_alcaldia, id_oficio } = req.body;
 
-  if (nombre !== undefined && !REGLA_NOMBRE.test(nombre)) {
+  if (nombre !== undefined && !esNombre(nombre)) {
     return res.status(400).json({ error: 'Nombre: solo letras, de 5 a 25 caracteres' });
   }
   if (telefono !== undefined && !/^55\d{8}$/.test(telefono)) {
