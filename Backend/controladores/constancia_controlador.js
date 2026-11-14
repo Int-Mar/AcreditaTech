@@ -14,6 +14,9 @@ const { dibujarConstancia } = require("../utilidades/constancia_pdf");
 const ESTADOS_APROBADOS = ["Aprobado", "Apto"];
 const ESTATUS_VENCIDA = "Vencida";
 
+// Formato del código: ACR- y 8 caracteres hexadecimales (ej. ACR-1A2B3C4D)
+const FORMATO_CODIGO = /^ACR-[0-9A-F]{8}$/;
+
 // ── Funciones de apoyo ─────────────────────────────────────────────────────
 
 // Código único de la constancia, por ejemplo ACR-1A2B3C4D
@@ -50,6 +53,18 @@ function buscarEvaluacion(evaluaciones, tipo) {
   return evaluaciones.find((e) => e.tipo_evaluacion === tipo);
 }
 
+// Regla: solo se puede obtener la Pre-Constancia con las dos pruebas aprobadas
+function completoLasPruebas(evaluaciones) {
+  const tecnica = buscarEvaluacion(evaluaciones, reglas.TIPO_TECNICA);
+  const salud = buscarEvaluacion(evaluaciones, reglas.TIPO_SALUD);
+  return Boolean(
+    tecnica &&
+    salud &&
+    ESTADOS_APROBADOS.includes(tecnica.estado_aprobacion) &&
+    ESTADOS_APROBADOS.includes(salud.estado_aprobacion),
+  );
+}
+
 // ── Descargar PDF ──────────────────────────────────────────────────────────
 // GET /api/constancia/pdf  (requiere sesión)
 async function descargarPdf(req, res) {
@@ -64,12 +79,7 @@ async function descargarPdf(req, res) {
     // Regla: solo si aprobó las dos pruebas (Preparación Completada)
     const evaluaciones = await modelo.obtenerEvaluacionesConId(id_usuario);
     const tecnica = buscarEvaluacion(evaluaciones, reglas.TIPO_TECNICA);
-    const salud = buscarEvaluacion(evaluaciones, reglas.TIPO_SALUD);
-    const completo =
-      tecnica &&
-      salud &&
-      ESTADOS_APROBADOS.includes(tecnica.estado_aprobacion) &&
-      ESTADOS_APROBADOS.includes(salud.estado_aprobacion);
+    const completo = completoLasPruebas(evaluaciones);
 
     if (!completo) {
       return res.status(403).json({
@@ -135,12 +145,55 @@ async function descargarPdf(req, res) {
   }
 }
 
+// ── Ver mi constancia ──────────────────────────────────────────────────────
+// GET /api/constancia  (requiere sesión)
+// Dice si el usuario ya tiene Pre-Constancia, si está vigente y si puede generarla.
+// No descarga el PDF: sirve para que la pantalla muestre el botón correcto.
+async function verMiConstancia(req, res) {
+  try {
+    const id_usuario = req.usuario.id_usuario;
+
+    const constancia = await modelo.buscarConstanciaDeUsuario(id_usuario);
+
+    if (constancia) {
+      return res.json({
+        tiene_constancia: true,
+        puede_generar: false,
+        codigo: constancia.codigo,
+        emitida: constancia.fecha_emision,
+        vigente_hasta: constancia.fecha_vencimiento,
+        estado: estaVigente(constancia.fecha_vencimiento)
+          ? "Vigente"
+          : "Vencida",
+      });
+    }
+
+    // Todavía no tiene: puede generarla si aprobó las dos pruebas
+    const evaluaciones = await modelo.obtenerEvaluacionesConId(id_usuario);
+    res.json({
+      tiene_constancia: false,
+      puede_generar: completoLasPruebas(evaluaciones),
+    });
+  } catch (error) {
+    console.error("Error al ver la constancia:", error.message);
+    res.status(500).json({ mensaje: "Error al obtener la Pre-Constancia" });
+  }
+}
+
 // ── Verificar (página pública) ─────────────────────────────────────────────
 // GET /api/constancia/verificar/:codigo  (SIN sesión)
 // Solo regresa: nombre, foto, oficio, alcaldía, estado y vigencia.
 async function verificar(req, res) {
   try {
-    const constancia = await modelo.buscarPorCodigo(req.params.codigo);
+    // El código se normaliza a mayúsculas y se valida antes de consultar la base
+    const codigo = String(req.params.codigo).toUpperCase();
+    if (!FORMATO_CODIGO.test(codigo)) {
+      return res
+        .status(400)
+        .json({ mensaje: "El código no tiene un formato válido" });
+    }
+
+    const constancia = await modelo.buscarPorCodigo(codigo);
 
     if (!constancia) {
       return res
@@ -165,4 +218,4 @@ async function verificar(req, res) {
   }
 }
 
-module.exports = { descargarPdf, verificar };
+module.exports = { descargarPdf, verMiConstancia, verificar };
