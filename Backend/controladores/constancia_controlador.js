@@ -9,6 +9,7 @@ const QRCode = require("qrcode");
 const modelo = require("../modelos/constancia_modelo");
 const avanceModelo = require("../modelos/avance_modelo");
 const reglas = require("../reglas");
+const { dibujarConstancia } = require("../utilidades/constancia_pdf");
 
 const ESTADOS_APROBADOS = ["Aprobado", "Apto"];
 const ESTATUS_VENCIDA = "Vencida";
@@ -107,8 +108,8 @@ async function descargarPdf(req, res) {
       width: 180,
     });
 
-    // ── Armar el PDF ──
-    const doc = new PDFDocument({ size: "A4", margin: 60 });
+    // ── Armar el PDF (el diseño está en utilidades/constancia_pdf.js) ──
+    const doc = new PDFDocument({ size: "A4", layout: "landscape", margin: 0 });
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader(
       "Content-Disposition",
@@ -116,53 +117,14 @@ async function descargarPdf(req, res) {
     );
     doc.pipe(res);
 
-    doc.fontSize(24).text("AcreditaTech", { align: "center" });
-    doc.moveDown(0.3);
-    doc.fontSize(18).text("Pre-Constancia de Preparación", { align: "center" });
-    doc.moveDown(2);
-
-    doc.fontSize(12).text("Se hace constar que:", { align: "center" });
-    doc.moveDown(0.5);
-    doc.fontSize(20).text(trabajador.nombre, { align: "center" });
-    doc.moveDown(0.5);
-    doc
-      .fontSize(12)
-      .text(
-        "completó su preparación en las evaluaciones técnica y de salud ocupacional.",
-        { align: "center" },
-      );
-    doc.moveDown(1.5);
-
-    doc.fontSize(13);
-    doc.text(`Oficio: ${trabajador.nombre_oficio}`);
-    doc.text(`Alcaldía de trabajo: ${trabajador.nombre_alcaldia}`);
-    doc.text(`Fecha de emisión: ${formatearFecha(constancia.fecha_emision)}`);
-    doc.text(`Vigente hasta: ${formatearFecha(constancia.fecha_vencimiento)}`);
-    doc.text(`Código: ${constancia.codigo}`);
-    doc.moveDown(1);
-
-    doc.image(imagenQr, { fit: [130, 130], align: "center" });
-    doc.moveDown(0.5);
-    doc
-      .fontSize(9)
-      .text("Escanea el código QR para verificar este documento.", {
-        align: "center",
-      });
-    doc.moveDown(1);
-
-    doc
-      .fontSize(8)
-      .fillColor("#555555")
-      .text(`Firma digital: ${constancia.firma_digital}`, { align: "center" });
-    doc.moveDown(1);
-    doc
-      .fontSize(9)
-      .fillColor("#000000")
-      .text(
-        "Este documento es informativo, de preparación autónoma. " +
-          "No sustituye una certificación oficial de competencias laborales.",
-        { align: "center" },
-      );
+    dibujarConstancia(doc, {
+      trabajador,
+      constancia,
+      imagenQr,
+      urlVerificar,
+      emision: formatearFecha(constancia.fecha_emision),
+      vencimiento: formatearFecha(constancia.fecha_vencimiento),
+    });
 
     doc.end();
   } catch (error) {
