@@ -1,0 +1,26 @@
+.contenedor { max-width: 760px; margin: 2rem auto; padding: 0 1rem; }
+.tarjeta { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+.titulo { font-size: 1.4rem; margin: 0 0 1rem; }
+.campo { display: flex; flex-direction: column; margin-bottom: 1rem; }
+.campo label { font-weight: 600; margin-bottom: 0.3rem; }
+.campo input, .campo select, .campo textarea { padding: 0.5rem; border: 1px solid #bbb;
+  border-radius: 6px; font-size: 1rem; }
+.casilla { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
+.boton { background: #1d4ed8; color: #fff; border: none; border-radius: 6px;
+  padding: 0.6rem 1.2rem; font-size: 1rem; cursor: pointer; }
+.boton:disabled { opacity: 0.5; cursor: default; }
+.exito { color: #15803d; margin-top: 0.8rem; }
+.error { color: #b91c1c; margin-top: 0.8rem; }
+.etiqueta { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 999px;
+  font-weight: 700; margin-bottom: 1rem; }
+.apto { background: #dcfce7; color: #166534; }
+.refuerzo { background: #fee2e2; color: #991b1b; }
+.pendiente { background: #e5e7eb; color: #374151; }
+.item { border-left: 6px solid #999; padding: 0.6rem 0.9rem; margin-bottom: 0.8rem;
+  background: #f9fafb; border-radius: 6px; }
+.rojo { border-left-color: #dc2626; }
+.amarillo { border-left-color: #eab308; }
+.verde { border-left-color: #16a34a; }
+.itemTema { font-weight: 700; }
+.itemRespuesta { color: #444; font-size: 0.95rem; }
