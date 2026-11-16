@@ -25,6 +25,19 @@ async function obtenerEstatus(id_usuario) {
   return resultado.rows[0];
 }
 
+// Regresa el vencimiento de la Pre-Constancia más reciente (o undefined si no tiene)
+async function obtenerVencimientoConstancia(id_usuario) {
+  const resultado = await conexion.query(
+    `SELECT fecha_vencimiento
+     FROM mpre_constancia
+     WHERE id_usuario = $1
+     ORDER BY id_constancia DESC
+     LIMIT 1`,
+    [id_usuario],
+  );
+  return resultado.rows[0];
+}
+
 // Cambia el estatus del usuario
 async function actualizarEstatus(id_usuario, estatus) {
   await conexion.query(
@@ -33,4 +46,9 @@ async function actualizarEstatus(id_usuario, estatus) {
   );
 }
 
-module.exports = { obtenerEvaluaciones, obtenerEstatus, actualizarEstatus };
+module.exports = {
+  obtenerEvaluaciones,
+  obtenerEstatus,
+  obtenerVencimientoConstancia,
+  actualizarEstatus,
+};

@@ -35,7 +35,7 @@ function resumirPrueba(evaluacion) {
   };
 }
 
-// Ver avance
+// ── Ver avance ─────────────────────────────────────────────────────────────
 // GET /api/avance
 // Regresa el porcentaje, el estatus y el resultado de cada prueba.
 async function verAvance(req, res) {
@@ -58,14 +58,25 @@ async function verAvance(req, res) {
     // Cada prueba aprobada suma 50%
     const porcentaje = (tecnica.aprobada ? 50 : 0) + (salud.aprobada ? 50 : 0);
 
-    // Estatus: con las dos aprobadas queda "Preparación Completada".
-    // Si ya está "Vencida" no se toca: eso lo decide la Pre-Constancia.
-    let estatus = usuario.estatus;
-    if (estatus !== ESTATUS_VENCIDA) {
-      estatus = porcentaje === 100 ? ESTATUS_COMPLETADO : ESTATUS_EN_PROCESO;
-      if (estatus !== usuario.estatus) {
-        await modelo.actualizarEstatus(id_usuario, estatus);
-      }
+    // "Vencida" se calcula con la fecha de vencimiento de la Pre-Constancia
+    // (no con un valor guardado). Si no tiene constancia, nunca está vencida.
+    const constancia = await modelo.obtenerVencimientoConstancia(id_usuario);
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    const vencida =
+      Boolean(constancia) && new Date(constancia.fecha_vencimiento) < hoy;
+
+    // Estatus: Vencida, o Preparación Completada con las dos pruebas aprobadas
+    let estatus = ESTATUS_EN_PROCESO;
+    if (vencida) {
+      estatus = ESTATUS_VENCIDA;
+    } else if (porcentaje === 100) {
+      estatus = ESTATUS_COMPLETADO;
+    }
+
+    // Se guarda en la base solo si cambió (el panel de administración lo lee de ahí)
+    if (estatus !== usuario.estatus) {
+      await modelo.actualizarEstatus(id_usuario, estatus);
     }
 
     // En salud ocupacional el trabajador no ve el número, solo el estado
