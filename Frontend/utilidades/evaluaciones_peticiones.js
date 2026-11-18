@@ -24,11 +24,15 @@ export async function obtenerPregunta(tipo) {
   return res.data;
 }
 
-// Manda la respuesta elegida
-export async function responderPregunta(tipo, id_pregunta, id_opcion) {
+// Manda la respuesta elegida.
+// "seleccion" es un número (una opción) o una lista de números (preguntas de casillas).
+export async function responderPregunta(tipo, id_pregunta, seleccion) {
+  const cuerpo = Array.isArray(seleccion)
+    ? { id_pregunta, id_opciones: seleccion }
+    : { id_pregunta, id_opcion: seleccion };
   const res = await axios.post(
     `/api/evaluaciones/${tipo}/respuesta`,
-    { id_pregunta, id_opcion },
+    cuerpo,
     encabezadoAuth()
   );
   return res.data;
